@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sort data </title>
+</head>
+<link rel="styleSheet" href="style.css" />
+<body>
+<div ng-app="sortTable" ng-controller="mainCtrl" class="container">
+  <h1 class="title">{{title}}</h1>
+  <div class="totalCount">
+  <span ng-model="count">Count: {{count}}</span>
+  <span ng-model="total">Total: {{total}}</span>
+  </div>
+<table>
+  <thead>
+    <tr>
+      <th ng-click="changeSortType('id')">ID
+      <span ng-show="isSortType('id')" ng-class="{'down':isOrderedReverse(), 'up': !isOrderedReverse()}"></span>
+      </th>
+      <th ng-click="changeSortType('name')">Name
+      <span ng-show="isSortType('name')" ng-class="{'down':isOrderedReverse(), 'up': !isOrderedReverse()}"></span>
+      </th>
+      <th ng-click="changeSortType('configuration')">Configuration
+      <span ng-show="isSortType('configuration')" ng-class="{'down':isOrderedReverse(), 'up': !isOrderedReverse()}"></span>
+      </th>
+      <th ng-click="changeSortType('defaultPads')">Default Pads
+      <span ng-show="isSortType('defaultPads')" ng-class="{'down':isOrderedReverse(), 'up': !isOrderedReverse()}"></span>
+      </th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat = "data in rocket | orderBy: orderType : orderReverse">
+      <td>{{ data.id }}</td>
+      <td>{{ data.name }}</td>
+      <td>{{ data.configuration }}</td>
+      <td>{{ data.defaultPads }}</td>
+    </tr>
+  </tbody>
+</table>
+      <script src="https://code.angularjs.org/1.5.8/angular.min.js"></script>
+      <script src="app.js"></script>
+<body>
+</html>
